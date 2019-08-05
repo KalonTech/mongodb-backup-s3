@@ -96,6 +96,10 @@ mongodbbackup:
 
 `AWS_DEFAULT_REGION` - aws bucket region
 
+`BACKUP_SUCCEEDED_COMMAND` - if set, the command will be executed in case of success
+
+`BACKUP_FAILED_COMMAND` - if set, the command will be executed in case of failure
+
 ## All comands
 
 To see the list of backups, you can run:
