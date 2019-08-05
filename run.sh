@@ -32,8 +32,10 @@ aws configure set default.s3.signature_version s3v4
 
 echo "=> Backup started"
 if mongodump --host ${MONGODB_HOST} --port ${MONGODB_PORT} ${USER_STR}${PASS_STR}${DB_STR} --archive=\${BACKUP_NAME} --gzip ${EXTRA_OPTS} && aws s3 cp \${BACKUP_NAME} \${S3BACKUP} && aws s3 cp \${S3BACKUP} \${S3LATEST} && rm \${BACKUP_NAME} ;then
+    eval $BACKUP_SUCCEEDED_COMMAND
     echo "   > Backup succeeded"
 else
+    eval $BACKUP_FAILED_COMMAND
     echo "   > Backup failed"
 fi
 echo "=> Done"
